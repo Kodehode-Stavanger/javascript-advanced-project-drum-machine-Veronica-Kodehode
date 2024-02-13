@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#drum-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  background-color: blueviolet;
+}
