@@ -5,6 +5,7 @@
 }
 
 #drum-container {
+  background-color: bisque;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -12,8 +13,57 @@
 }
 
 .drum {
-  width: 100px;
-  height: 100px;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
   margin: 5px;
-  background-color: blueviolet;
+  border-radius: 50px;
+  border: 2px solid black;
+  position: relative;
+}
+
+.animation {
+  animation: rotation 1s infinite linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+#clap {
+  background-color: yellow;
+}
+
+
+#hihat {
+background-color: orange;
+}
+
+#kick {
+background-color: orangered;
+}
+
+#openhat{
+background-color: red;
+}
+
+#ride {
+background-color: purple;
+}
+
+#snare{
+background-color: blue;
+}
+#tink {
+background-color:teal;
+}
+
+#tom {
+background-color: green ;
 }

@@ -1,15 +1,15 @@
 const clap = document.getElementById("clap");
 
-const sounds = [
-  "clap.wav",
-  "hihat.wav",
-  "kick.wav",
-  "openhat.wav",
-  "ride.wav",
-  "snare.wav",
-  "tink.wav",
-  "tom.wav",
-];
+  const sounds = [
+    "sounds/clap.wav",
+    "sounds/hihat.wav",
+    "sounds/kick.wav",
+    "sounds/openhat.wav",
+    "sounds/ride.wav",
+    "sounds/snare.wav",
+    "sounds/tink.wav",
+    "sounds/tom.wav",
+  ];
 
 const keys = ["a", "s", "d", "f", "j", "k", "l", "ø"];
 
@@ -20,19 +20,35 @@ keys.forEach((key, index) => {
 });
 
 
-
-
-
-
-function test() {
-  const something = new Audio("./sounds/clap.wav");
-  something.play();
+function playSound(sound) {
+  const audio = new Audio(sound);
+  audio.play();
 }
 
-clap.addEventListener("click", test);
+const drumElements = document.querySelectorAll('.drum');
 
-// function playSound(sound) {
-//   const audio = new Audio(sound);
-//   audio.play();
+for (let index in drumElements) {
+  if (drumElements.hasOwnProperty(index)) {
+    drumElements[index].addEventListener('click', () => {
+      playSound(sounds[index]);
+      drumElements[index].classList.toggle("animation");
+      
+      drumElements[index].addEventListener("animationend", () => {
+        drumElements[index].classList.remove("animation");
+      })
+    });
+  }
+}
 
-// }
+document.addEventListener("keydown", (event) => {
+  const key = event.key.toLowerCase();
+  if (keys.includes(key)) {
+    playSound(keyToSound[key]);
+    const index = keys.indexOf(key);
+    drumElements[index].classList.toggle("animation");
+    
+    drumElements[index].addEventListener("animationend", () => {
+      drumElements[index].classList.remove("animation");
+    })
+  }
+});
